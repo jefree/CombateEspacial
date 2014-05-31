@@ -126,7 +126,9 @@ var socket = null;
 
 conectar = function(){
     
-    socket = io.connect('http://localhost:8085/');
+    console.log("Intentando conectarse al servidor");
+
+    socket = io('http://localhost:8085/');
     
     /*
      * Aqui se procesa el evento de la llegada de un nuevo

@@ -10,12 +10,11 @@
 /*
  * Variables del Servidor
  */
-var io = require('socket.io').listen(8085);
+var io = require('socket.io')(8085);
 var http = require('http');
 var usuarios = new Array();
 
-
-io.set('log level', 1);
+console.log("server initialized");
 
 /*
  * Oyentes
@@ -24,9 +23,10 @@ io.set('log level', 1);
  * mensajes que llegan de los clientes y en funcion de
  * estos enviar mensajes a los clientes.
  */
-io.sockets.on('connection', function(socket){
+io.on('connection', function(socket){
    
-   
+   console.log("alguien llego")
+
     /*
      * Evento identify
      * 
