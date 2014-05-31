@@ -1,0 +1,77 @@
+root { 
+    display: block;
+}
+
+BODY{
+
+	background-image:url('fondo.gif');
+        color:rgb(255, 255, 255) 
+}
+
+body.pagJuego{
+    
+    background-image:url('fondo_juego.png');
+    
+}
+
+h1, h2, h3 {
+  color:#FFFFFF;
+}
+
+p {
+    color:#FFFFFF;
+    font-size: 20px;
+}
+
+INPUT {
+
+	BACKGROUND-COLOR: #FFFFFF;
+	COLOR: #000000;
+}
+
+table.Info {
+    
+    font: 18px "New Century Schoolbook";
+
+}
+
+th {
+    
+    FONT-SIZE: 12px; 
+    TEXT-ALIGN: center;
+    font-weight: bolder;
+    color: #DFDFDF;
+    background-color: #555599;
+    border: solid 1px #000000;
+}
+
+td.etq {
+    
+    color: aqua;
+    
+}
+
+a.logout {
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: skyblue;
+    font-size: 20px;
+}
+
+a.pagPrincipal {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: skyblue;
+    font-size: 20px;
+}
+
+a.reingresar {
+    color: skyblue;
+    font-size: 20px;
+}
+
+

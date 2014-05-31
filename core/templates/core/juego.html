@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta HTTP-EQUIV=”Pragma” CONTENT=”no-cache”>
+		<meta HTTP-EQUIV=”Expires” CONTENT=”-1″>
+        
+        <link href='{{STATIC_URL}}diseno.css' rel='stylesheet' type='text/css'/>
+        <title>Combate Espacial</title>
+        
+        
+        <script type="text/javascript" src ="{{STATIC_URL}}Game/mainGameScript.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}Game/balaScript.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}Game/playerScript.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}Client/socket.io.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}Client/AppClientScript.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}jquery-1.7.min.js"></script>
+        
+        <script type="text/javascript">
+			
+			var regresar = false;
+			
+			STATIC_URL = '{{STATIC_URL}}'
+            
+            var idCliente = "{{jugador.user.username}}";
+            var idSala = "{{idSala}}";
+            var imgJug = "{{STATIC_URL}}naves/"+"{{idNave}}"+".PNG";
+            
+            salirPagina = function(){
+                
+                socket.disconnect('valido');
+                   
+				location.href = "/regresar/"+jugadores[0].getPuntaje()+"/"+tiempo+"/"+dAcertados+"/"+idSala+"/regreso/"
+            }
+		
+        </script>
+		
+    </head>
+    
+    <body class="pagJuego" onload="cargarJuego()">
+        
+        <!--<h1 align="center">Combate Espacial</h1>-->
+            
+                <audio id="sondDisparo" src="{{STATIC_URL}}disparo.wav" preload="auto"></audio>
+
+                <center>
+                    <canvas id="gameCanvas" name="gameCanvas" width="700" height="450">
+                        <p>Tu navegador no es compatible con Canvas HTML 5</p>
+                    </canvas>
+
+                    <center>
+                        <input type="button" name="btnRegresar" value="Regresar" onclick="regresar=true; salirPagina()"/>
+                    </center>    
+                </center> 
+
+    </body>
+    
+    <p align = 'center' style='font-style: bold; font-size: 11px; position:absolute; top: 89%; left: 41%;'> Desarrollado por: <br/> Jefferson Garzon <br/> Juan Camilo Martha <br/> Universidad Distrital Francisco de Caldas</p>
+        
+</html>

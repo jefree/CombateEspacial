@@ -1,0 +1,208 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <!--<meta HTTP-EQUIV="Refresh" CONTENT="5;URL=Salas.jsp"/>-->
+        <title>Salas de Juego</title>
+        <link href='{{STATIC_URL}}diseno.css' rel='stylesheet' type='text/css'/>
+        
+        <script type="text/javascript" src ="{{STATIC_URL}}jquery-1.7.min.js"></script>
+		
+    </head>
+    <body onload="(document.getElementsByName('sala'))[0].checked = true;" >
+
+        <a class="logout" href="/abandonar/">Salir</a>
+        <a class="pagPrincipal" href="/infoUsuario/none/">Ir a Cuenta</a>
+        
+        <div align="center"><img src="{{STATIC_URL}}titulo.gif"><br>
+        
+        <h1>SALAS DE JUEGO</h1>
+        
+        {% if aviso = 'yaensala'%}
+			<center> LO SENTIMOS NO PUEDE ACCEDER A LAS SALAS </center>
+        {% endif %}
+        
+        {% if aviso = 'salallena'%}
+			<center> LO SENTIMOS LA SALA ESTA LLENA </center>
+        {% endif %}
+			
+        {% if aviso = 'derrotado'%}
+			<center> HA SIDO DERROTADO, SELECCIONE UNA SALA PARA JUGAR </center>
+        {% endif %}
+			
+        <form name="formSalas" id="formSalas" action="/conectarASala/" method="POST">
+			
+			{% csrf_token %}
+			
+            <table border="0" cellspacing="4">
+                <tr>
+                    <td><div align="right">
+                        <table border="3" cellpadding="4">
+
+                            <tr>
+                                <th>Nombre Sala</th><th>Jugadores</th><th>Disponibilidad</th>
+                            </tr>
+							
+							{% if salas %}
+							
+							{% for s in salas %}
+								
+								<tr>
+									<td>{{s.nombre}}</td>
+									<td name="nSalas">{{s.numero_jugadores}}</td>
+									
+									<td>
+									
+									{% if s.numero_jugadores < s.maximo_jugadores %}
+										
+										<input type="radio" name="sala" value={{s.nombre}} >
+									{% else %}
+										
+										<input type="radio" name="sala" value={{s.nombre}} disabled="true">
+									{% endif %}
+									</td>
+								</tr>
+								
+							{% endfor%}
+							
+							{% endif%}
+							
+                        </table>
+                        
+                        <script type="text/javascript">
+							
+							var peticion = function(){
+									
+								$.get("../actualizarSalas/", function(d){
+									
+									d = d.split(' ');
+									
+									rbSalas = document.getElementsByName('sala');
+									nSalas = document.getElementsByName('nSalas');
+									
+									for(var c=0; c<nSalas.length; c++){
+										
+										if(d[c] != '-1'){
+												
+											nSalas[c].innerHTML = d[c];
+											rbSalas[c].disabled = false;
+											
+										} else {
+											
+											nSalas[c].innerHTML = 'Sala Llena';
+											rbSalas[c].disabled = true;
+											rbSalas[c].checked = false;
+											
+											var checked = false;
+											
+											for(var i=0; i<rbSalas.length; i++){
+												
+												if(!rbSalas[i].disabled){
+														
+													rbSalas[i].checked = true;
+													btnSubmit.disabled = false	;
+													btnSubmit.value = "Conectarse"
+													
+													checked = true;
+													i = rbSalas.length;
+												}
+											}
+											
+											if(!checked){
+												
+												btnSubmit.disabled = true;
+												btnSubmit.value = "No hay Salas";
+											}
+										}
+										
+									}
+								});
+							}
+							
+							setInterval(peticion, 2000)
+						
+						</script>
+                        
+                       </div>     
+                    </td>
+                    <td>
+                        <fieldset>
+                            <legend>Seleccione su nave</legend>
+
+                            <table cellpadding ="20">
+                                <tr>
+                                    <td>
+                                        <legend>Nave Delta</legend>
+
+                                        <input checked="true" type="radio" name="nave" id="nave1" value="nave1"/>
+                                        <label for="nave1">
+                                            <img src="{{STATIC_URL}}naves/nave1.PNG" alt="error"/>
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        <legend>Nave Gamma</legend>
+                                            <input type="radio" name="nave" id="nave2" value="nave2"/>
+                                            <label for="nave2">
+                                                <img src="{{STATIC_URL}}naves/nave2.PNG" alt="error"/>
+                                            </label>
+                                    </td>
+
+                                    <td>
+                                        <legend>Nave Alfa</legend>
+                                            <input type="radio" name="nave" id="nave3" value="nave3"/>
+                                            <label for="nave3">
+                                                <img src="{{STATIC_URL}}naves/nave3.PNG" alt="error"/>
+                                            </label>
+                                    </td>        
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <legend>Nave Omega</legend>
+                                        <input type="radio" name="nave" id="nave4" value="nave4"/>
+                                        <label for="nave4">
+                                            <img src="{{STATIC_URL}}naves/nave4.PNG" alt="error"/>
+                                        </label>
+                                    </td> 
+
+                                    <td>
+                                        <legend>Nave Epsilon</legend>
+                                        <input type="radio" name="nave" id="nave5" value="nave5"/>
+                                        <label for="nave5">
+                                            <img src="{{STATIC_URL}}/naves/nave5.PNG" alt="error"/>
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        <legend>Nave Iota</legend>
+                                        <input type="radio" name="nave" id="nave6" value="nave6"/>
+                                        <label for="nave6">
+                                            <img src="{{STATIC_URL}}/naves/nave6.PNG" alt="error"/>
+                                        </label>
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                        </fieldset> 
+                    </td>
+                </tr>
+            </table>
+                <p>
+                    <input type="button" name="instrucciones" value="Instrucciones de juego" onclick="location.href='../../salas/instrucciones/'">
+                    <input type="submit" id="btnSubmit" name="submit" value="Conectarse"/>
+                </p>
+                
+                <script type="text/javascript">
+					var btnSubmit = document.getElementById("btnSubmit");
+                </script>
+                
+        </form>      
+        </div> 
+        
+        <p align = 'center' style='font-style: bold; font-size: 11px; position:absolute; top: 89%; left: 41%;'> Desarrollado por: <br/> Jefferson Garzon <br/> Juan Camilo Martha <br/> Universidad Distrital Francisco de Caldas</p>
+               
+    </body>
+    
+</html>

@@ -1,0 +1,62 @@
+
+<!--<%  
+    
+    String opc = request.getParameter("opc");
+
+%>-->
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href='{{STATIC_URL}}diseno.css' rel='stylesheet' type='text/css'/>
+        <script type="text/javascript" src="{{STATIC_URL}}validarEditar.js"></script>
+        <title>Editar Cuenta</title>
+    </head>
+    
+    <body>
+        <div align="center">
+            <img src="{{STATIC_URL}}titulo.gif">
+            <h1>Editar Cuenta</h1>
+            
+            <form id="formEditar" name="formEditar" action="/cambiarInfo/" method="POST">
+				
+				{% csrf_token %}
+				
+                <table>
+
+                    <tr>
+                        <th scope="row">Contraseña Antigua:*</th>
+                        <td><input type="password" name="txtContraA" id="txtContraA" /></td>
+                            
+                        
+                        {% if aviso == 'contranovalida'%}
+							<center>CONTRASEÑA NO VALIDA</center>
+						{% endif %}
+                        
+                    </tr>
+                    <tr>
+                        <th scope="row">Contaseña Nueva:*</th>
+                        <td><input type="password" name="txtContraN" id="txtContraN" size="20"/></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Verificar Contraseña Nueva:*</th>
+                        <td><input type="password" name="txtVContraN" id="txtVContraN" size="20"/></td>
+                    </tr>
+                    
+                    <!--<tr>
+                        <th scope="row">Frase de reestablecer contraseña:*</th>
+                        <td><input type="text" name="txtFrase" id="txtFrase" size="20" value="{{Jugadorsession.getAttribute("jugador")).getFrase() %>"/></td>
+                    </tr>-->
+
+                    <tr>
+                        <td align="center"><input type="button" id="btnGuardar" name="btnGuardar" value="Guardar" onclick="validar()"/></td>
+                        <td align="center"><input type="button" id="btnRegresar" name="btnRegresar" value="Cancelar" onclick="location.href = '/infoUsuario/none/'"/></td>
+                    </tr>
+                </table>
+           </form>
+        </div>
+        
+        <p align = 'center' style='font-style: bold; font-size: 11px; position:absolute; top: 89%; left: 41%;'> Desarrollado por: <br/> Jefferson Garzon <br/> Juan Camilo Martha <br/> Universidad Distrital Francisco de Caldas</p>
+        
+    </body>
+</html>

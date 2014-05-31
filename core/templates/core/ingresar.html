@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Ingresar</title>
+        <link href='{{STATIC_URL}}diseno.css' rel='stylesheet' type='text/css'></link>
+        <script type="text/javascript" >
+            
+            function validar(){
+               
+                var txtNick = document.getElementById("txtNick");
+                var txtContra = document.getElementById("txtContra");
+
+                if(txtNick.value == "" || txtContra.value == ""){
+
+                    alert("Llene los campos solicitados");
+                    
+                    return;
+                } 
+
+                document.getElementById("form1").submit();
+                
+            }
+            
+        </script>
+    </head>
+
+    <body onload="document.getElementById('txtNick').focus()">
+        <a class="pagPrincipal" href="/">Pagina Principal</a>
+        <div align="center"><img src="{{STATIC_URL}}titulo.gif"/></div><br/>
+        <form id="form1" name="form1" method="POST" action="/validarJugador/">
+				
+				{%csrf_token%}
+				
+            <h2 align="center"><strong>Ingresar</strong></h2>
+				         
+				{% if error = 'error' %}
+					<center>
+						Nick y/o Password Incorrectos
+					</center>
+				{% endif %}
+				
+				{% if error = 'ensesion' %}
+					<center>
+						Sesion ya activa
+					</center>
+				{% endif %}
+
+            <div align="center">
+
+                <table width="314" border="1">
+                    <tr>
+                        <th width="162" scope="row">
+                            Nick :</th>
+                        <td width="136"><input type="text" name="txtNick" id="txtNick" /></td>
+                    </tr>
+                    <tr>
+                        <th width="162" scope="row">
+                            Contaseña :</th>
+                        <td width="136"><input type="password" name="txtContra" id="txtContra" /></td>
+                    </tr>
+                </table>
+                <p>
+                    <input type="button" name="Aceptar2" id="Aceptar2" value="Aceptar" onclick="validar()"/>
+                </p>
+                
+                <p>
+                    <a class="Info" href="/nuevaContrasena/none/" style="color: skyblue;">Olvido su contraseña?</a>
+                </p>
+            </div>
+            <div align="center"></div>
+
+        </form>
+        
+        <p align = 'center' style='font-style: bold; font-size: 11px; position:absolute; top: 89%; left: 41%;'> Desarrollado por: <br/> Jefferson Garzon <br/> Juan Camilo Martha <br/> Universidad Distrital Francisco de Caldas</p>
+        
+    </body>
+</html>
+

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Juego</title>
+         <link href='{{STATIC_URL}}diseno.css' rel='stylesheet' type='text/css'>
+    </head>
+    
+    <body width="700" height="500">
+        <div align="center"><img src="{{STATIC_URL}}titulo.gif"></div><br>
+        <h1 align="center" style="text-align:center;"><tt>COMBATE ESPACIAL</tt></h1>
+        
+        <form id="form1" name="form1">
+				
+				{%csrf_token%}
+				
+            <p>&nbsp;</p>
+            <blockquote>
+                <p align="center">
+                    <input type="button" name="txtIngresar" id="txtIngresar" value="INGRESAR" onclick=" location.href = 'ingresar/none/' "/>
+                </p>
+            </blockquote>
+            <p align="center">
+                <input type="button" name="txtRegistrarse" id="txtRegistrarse" value="REGISTRARSE" onclick=" location.href = 'registrarse/none/' "/>
+            </p>
+            <p align="center">Descripcion</p>
+            <p align="center">  Use su nave para acabar con los jugadores disparandoles, 
+                            <br>no olvide usar el escudo para protegerse</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>
+            </p>
+        </form>
+    
+		<p align = 'center' style='font-style: bold; font-size: 11px; position:absolute; top: 89%; left: 41%;'> Desarrollado por: <br/> Jefferson Garzon <br/> Juan Camilo Martha <br/> Universidad Distrital Francisco de Caldas</p>
+        
+	</body>
+</html>

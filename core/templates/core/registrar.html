@@ -1,0 +1,73 @@
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Registrarse</title>
+        <link href='{{STATIC_URL}}diseno.css' rel='stylesheet' type='text/css'></link>
+        <script src="{{STATIC_URL}}validarRegistrar.js" language="javascript1.2"></script>
+            
+    </head>
+        
+    <body>
+        <a class="pagPrincipal" href="/">Pagina Principal</a>
+        
+        <div align="center"><img src="{{STATIC_URL}}titulo.gif"/></div><br/>
+        
+        <form id="frmRegistrar" action="/insertarJugador/" method="POST">
+					
+				{%csrf_token%}
+				
+            <div align="center">
+                <h2>Registrate!!</h2>
+						
+					{% if error == 'nickexiste' %}
+						 
+						<center>Nick ya esta en uso</center>
+					
+					{% endif %}
+						
+                <table width="300" border="1">
+                    <tr>
+                        <th width="177" scope="row">Nombre:*</th>
+                        <td width="107"><input type="text" name="txtNombre" id="txtNombre" /></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Apellido:*</th>
+                        <td><input type="text" name="txtApellido" id="txtApellido" /></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nick:*</th>
+                        <td><input type="text" name="txtNick" id="txtNick" /></td>
+                    </tr> 
+                    <tr>
+                        <th scope="row">Contaseña:*</th>
+                        <td><input type="password" name="txtContra" id="txtContra" /></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">VerificarContraseña:*</th>
+                        <td><input type="password" name="txtVContra" id="txtVContra" /></td>
+                    </tr> 
+                    <tr>
+                        <th scope="row">Frase Restauracion:*</th>
+                        <td><input type="text" name="txtFrase" id="txtFrase" /></td>
+                    </tr>
+                </table>
+                <p><strong>Genero:</strong>
+                    <input type="radio" name="slcGenero" id="slcGenero" value="Masculino" checked="true"/>
+                    Maculino 
+                    <input type="radio" name="slcGenero" id="slcGenero" value="Femenino" />
+                    Femenino</p>
+                <p>
+                    <input type="button" value="Aceptar"  onclick="validar()" />
+                </p>
+            </div>
+        </form>
+        <p></p>
+            
+    </body>
+    
+    <p align = 'center' style='font-style: bold; font-size: 11px; position:absolute; top: 89%; left: 41%;'> Desarrollado por: <br/> Jefferson Garzon <br/> Juan Camilo Martha <br/> Universidad Distrital Francisco de Caldas</p>
+        
+</html>
+    
+ 

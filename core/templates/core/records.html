@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href='{{STATIC_URL}}diseno.css' rel='stylesheet' type='text/css'/>
+        <title>Records</title>
+    </head>
+    <body>
+        <div align="center"><img src="{{STATIC_URL}}titulo.gif"></div><br>
+        <a class="pagPrincipal" href="../infoUsuario/none/">Volver</a>
+        <div align="center">  
+        <h1>PUNTAJES MAS ALTOS</h1>
+        
+        <table border="3" cellpadding="8">
+            
+            <tr>
+                <th>Nick</th><th>Puntaje</th>
+            </tr>
+			
+			{% if records %}
+				{% for j in records  %}
+				
+					<tr>
+						<td>{{j.user.username}}</td>
+						<td>{{j.puntaje}}</td>
+					</tr>
+				
+				{% endfor %}
+            {% endif %}
+        </table>
+        </div>  
+    </body>
+    
+    <p align = 'center' style='font-style: bold; font-size: 11px; position:absolute; top: 89%; left: 41%;'> Desarrollado por: <br/> Jefferson Garzon <br/> Juan Camilo Martha <br/> Universidad Distrital Francisco de Caldas</p>
+        
+</html>

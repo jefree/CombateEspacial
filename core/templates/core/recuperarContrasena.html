@@ -1,0 +1,41 @@
+<html>
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link href='{{STATIC_URL}}diseno.css' rel='stylesheet' type='text/css'/>
+		<title>Recuperar Contraseña</title>
+	</head>
+	
+	<body>
+		<a class="pagPrincipal" href="/">Pagina Principal</a>
+		
+		<div align="center"><img src="{{STATIC_URL}}titulo.gif"></div><br>
+		<div align = 'center'>
+		<form action='/recuperarContrasena/' method=POST>
+		
+			{% csrf_token %}
+		
+			<h2>Escriba su nombre de Usuario Y Frase de Restauracion</h2>
+			
+			{% if aviso == 'error'%}
+			
+				<h3>Error al validar la informacion</h3>
+			{%endif%}
+			
+			<table>
+				<tr>
+					<td>Usuario: </td>
+					<td><input type='text' name='txtUsuario' id ='txtUsuario'/></td>
+				</tr>
+				<tr>
+					<td>Frase: </td>
+					<td><input type='text' name='txtFrase' id ='txtFrase'/></td>
+				</tr>
+				<tr>
+					<td align='center' colspan='2'><input type='submit' value='enviar'/></td>	
+				</tr>
+			</table>
+		</form>
+		</div>
+	</body>
+</html>
