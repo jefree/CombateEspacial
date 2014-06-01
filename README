@@ -1,0 +1,20 @@
+Combate Espacial is a funny multiplayer online game
+in wich your take a ship and facing other player around the world.
+
+Combate Espacial use web framework Django and NodeJs Server for 
+websocket connection to manage real time events.
+
+In way to deploy this application please install django:
+
+	pip install django
+
+you most also install NodeJs and Socket.IO library:
+
+	apt-get install nodejs
+	npm install socket.io
+
+remember you need make a databse sync for django (by default it use a sqlite3 plugin),
+and finally execute the django server and run the websocket server script:
+
+	python manage.py runserver
+	nodejs AppServerScript.js
