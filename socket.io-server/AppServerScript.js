@@ -64,40 +64,42 @@ io.on('connection', function(socket){
     /*
      *
      */
-    socket.on('disconnect', function(idDesc){
-			
-		var id_abandono;
-		var id_sala_abandono;
-		
-		for(var i=0; i<usuarios.length; i++){
-			
-			if(usuarios[i].idC == socket.id){
-				
-				socket.broadcast.emit('abandono', usuarios[i]);
-				console.log('se fue '+usuarios[i].id);
-				
-				id_abandono = usuarios[i].id;
-				id_sala_abandono = usuarios[i].idSala;
-				
-				usuarios.splice(i, 1);
-			}
-		}
-		
-		if(idDesc == null){
-			
-			var opciones = {
-				host: 'localhost',
-				path: '/CombateEspacial/abandonarForzado/' + id_abandono + '/' + id_sala_abandono + '/',
-				port: 8000,
-			};
-			
-			http.get(opciones, function(res) {
-			  console.log("Got response: " + res.statusCode);
-			}).on('error', function(e) {
-			  console.log("Got error: " + e.message);
-			});
-		}
-			
-	});
+    socket.on('disconnect', function(status){
+            
+        var id_abandono;
+        var id_sala_abandono;
+        
+        console.log('disconnect status: '+status);
+
+        for(var i=0; i<usuarios.length; i++){
+            
+            if(usuarios[i].idC == socket.id){
+                
+                socket.broadcast.emit('abandono', usuarios[i]);
+                console.log('se fue '+usuarios[i].id);
+                
+                id_abandono = usuarios[i].id;
+                id_sala_abandono = usuarios[i].idSala;
+                
+                usuarios.splice(i, 1);
+            }
+        }
+        
+        if(status == 'transport close'){
+            
+            var opciones = {
+                host: 'localhost',
+                path: '/abandonarForzado/' + id_abandono + '/' + id_sala_abandono + '/',
+                port: 8000,
+            };
+            
+            http.get(opciones, function(res) {
+              console.log("Got response: " + res.statusCode);
+            }).on('error', function(e) {
+              console.log("Got error: " + e.message);
+            });
+        }
+            
+    });
    
 });

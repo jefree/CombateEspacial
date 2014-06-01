@@ -153,7 +153,7 @@ def conectar(request):
 	idSala = request.POST['sala']
 	idNave = request.POST['nave']
 	
-	sala = Sala.objects.get(nombre = idSala)
+	sala = Sala.objects.get(nombre=idSala)
 	
 	if sala.numero_jugadores < sala.maximo_jugadores:
 		

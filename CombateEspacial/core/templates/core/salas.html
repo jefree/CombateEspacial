@@ -54,10 +54,10 @@
 									
 									{% if s.numero_jugadores < s.maximo_jugadores %}
 										
-										<input type="radio" name="sala" value={{s.nombre}} >
+										<input type="radio" name="sala" value="{{s.nombre}}" >
 									{% else %}
 										
-										<input type="radio" name="sala" value={{s.nombre}} disabled="true">
+										<input type="radio" name="sala" value="{{s.nombre}}" disabled="true">
 									{% endif %}
 									</td>
 								</tr>
@@ -169,7 +169,7 @@
                                         <legend>Nave Epsilon</legend>
                                         <input type="radio" name="nave" id="nave5" value="nave5"/>
                                         <label for="nave5">
-                                            <img src="{{STATIC_URL}}/naves/nave5.PNG" alt="error"/>
+                                            <img src="{{STATIC_URL}}naves/nave5.PNG" alt="error"/>
                                         </label>
                                     </td>
 
@@ -177,7 +177,7 @@
                                         <legend>Nave Iota</legend>
                                         <input type="radio" name="nave" id="nave6" value="nave6"/>
                                         <label for="nave6">
-                                            <img src="{{STATIC_URL}}/naves/nave6.PNG" alt="error"/>
+                                            <img src="{{STATIC_URL}}naves/nave6.PNG" alt="error"/>
                                         </label>
                                     </td>
 
@@ -200,9 +200,5 @@
                 
         </form>      
         </div> 
-        
-        <p align = 'center' style='font-style: bold; font-size: 11px; position:absolute; top: 89%; left: 41%;'> Desarrollado por: <br/> Jefferson Garzon <br/> Juan Camilo Martha <br/> Universidad Distrital Francisco de Caldas</p>
-               
     </body>
-    
 </html>
