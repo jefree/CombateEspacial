@@ -4,13 +4,13 @@ root {
 
 BODY{
 
-	background-image:url('fondo.gif');
+	background-image:url('../img/fondo.gif');
         color:rgb(255, 255, 255) 
 }
 
 body.pagJuego{
     
-    background-image:url('fondo_juego.png');
+    background-image:url('../img/fondo_juego.png');
     
 }
 

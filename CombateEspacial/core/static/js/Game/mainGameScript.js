@@ -117,7 +117,7 @@ iniciarJuego = function(){
 	sondDisparo = document.getElementById("sondDisparo");
     
     imgFondo = new Image();
-    imgFondo.src = STATIC_URL+'fondoCanvas.png';
+    imgFondo.src = STATIC_URL+'img/fondoCanvas.png';
    
     iniciarBalas();
     enviarIdentificar(idCliente);
@@ -180,7 +180,7 @@ iniciarBalas = function(){
     
     for (i = 0; i < MAX_BALAS; i++) {
     
-        balas[i] = new Bala(STATIC_URL+"bala.PNG");
+        balas[i] = new Bala(STATIC_URL+"img/bala.PNG");
     }
 }
         

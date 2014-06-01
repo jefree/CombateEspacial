@@ -4,16 +4,16 @@
         <meta HTTP-EQUIV=”Pragma” CONTENT=”no-cache”>
 		<meta HTTP-EQUIV=”Expires” CONTENT=”-1″>
         
-        <link href='{{STATIC_URL}}diseno.css' rel='stylesheet' type='text/css'/>
+        <link href='{{STATIC_URL}}css/diseno.css' rel='stylesheet' type='text/css'/>
         <title>Combate Espacial</title>
         
         
-        <script type="text/javascript" src ="{{STATIC_URL}}Game/mainGameScript.js"></script>
-        <script type="text/javascript" src ="{{STATIC_URL}}Game/balaScript.js"></script>
-        <script type="text/javascript" src ="{{STATIC_URL}}Game/playerScript.js"></script>
-        <script type="text/javascript" src ="{{STATIC_URL}}Client/socket.io.js"></script>
-        <script type="text/javascript" src ="{{STATIC_URL}}Client/AppClientScript.js"></script>
-        <script type="text/javascript" src ="{{STATIC_URL}}jquery-1.7.min.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}js/Game/mainGameScript.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}js/Game/balaScript.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}js/Game/playerScript.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}js/Client/socket.io.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}js/Client/AppClientScript.js"></script>
+        <script type="text/javascript" src ="{{STATIC_URL}}js/jquery-1.7.min.js"></script>
         
         <script type="text/javascript">
 			
@@ -23,7 +23,7 @@
             
             var idCliente = "{{jugador.user.username}}";
             var idSala = "{{idSala}}";
-            var imgJug = "{{STATIC_URL}}naves/"+"{{idNave}}"+".PNG";
+            var imgJug = "{{STATIC_URL}}img/naves/"+"{{idNave}}"+".PNG";
             
             salirPagina = function(){
                 
@@ -40,7 +40,7 @@
         
         <!--<h1 align="center">Combate Espacial</h1>-->
             
-                <audio id="sondDisparo" src="{{STATIC_URL}}disparo.wav" preload="auto"></audio>
+                <audio id="sondDisparo" src="{{STATIC_URL}}sound/disparo.wav" preload="auto"></audio>
 
                 <center>
                     <canvas id="gameCanvas" name="gameCanvas" width="700" height="450">
